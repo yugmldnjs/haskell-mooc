@@ -16,6 +16,7 @@ import Mooc.Todo
 
 -- Some imports you'll need. Don't add other imports :)
 import Data.List
+import Test.QuickCheck (Result(NoExpectedFailure))
 
 ------------------------------------------------------------------------------
 -- Ex 1: Define the constant years, that is a list of the values 1982,
@@ -92,7 +93,7 @@ isPalindrome str = str == reverse str
 palindromify :: String -> String
 palindromify s
   | isPalindrome s = s
-  | otherwise      = palindromify (init (tail s))
+  | otherwise      = palindromify (tail (init s))
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement safe integer division, that is, a function that
@@ -105,7 +106,9 @@ palindromify s
 --   safeDiv 4 0  ==> Nothing
 
 safeDiv :: Integer -> Integer -> Maybe Integer
-safeDiv x y = todo
+safeDiv x y 
+  | y == 0    = Nothing
+  | otherwise = Just (div x y)
 
 ------------------------------------------------------------------------------
 -- Ex 8: implement a function greet that greets a person given a first
