@@ -120,7 +120,7 @@ safeDiv x y
 --   greet "John" (Just "Smith")  ==> "Hello, John Smith!"
 
 greet :: String -> Maybe String -> String
-greet first Nothing = "Hello, " ++ first ++"!" 
+greet first Nothing = "Hello, " ++ first ++ "!" 
 greet first (Just last) = "Hello, " ++ first ++ " " ++ last ++ "!"
 
 ------------------------------------------------------------------------------
@@ -137,7 +137,10 @@ greet first (Just last) = "Hello, " ++ first ++ " " ++ last ++ "!"
 --   safeIndex ["a","b","c"] (-1)  ==> Nothing
 
 safeIndex :: [a] -> Int -> Maybe a
-safeIndex xs i = todo
+safeIndex xs i 
+  | len <= i || i < 0 = Nothing
+  | otherwise = Just (xs !! i)
+  where len = length xs
 
 ------------------------------------------------------------------------------
 -- Ex 10: another variant of safe division. This time you should use
