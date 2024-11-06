@@ -65,7 +65,11 @@ oddFactorial n
 -- * https://en.wikipedia.org/wiki/Euclidean_algorithm
 
 myGcd :: Integer -> Integer -> Integer
-myGcd = todo
+myGcd a b
+  | a == 0    = b
+  | b == 0    = a
+  | a >= b    = myGcd (a-b) b
+  | otherwise = myGcd a (b-a)
 
 ------------------------------------------------------------------------------
 -- Ex 4: Implement the function leftpad which adds space characters
