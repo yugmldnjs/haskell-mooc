@@ -136,7 +136,9 @@ smallestDivisor' n k = if mod n k == 0
 -- Ps. 0 and 1 are not prime numbers
 
 isPrime :: Integer -> Bool
-isPrime = todo
+isPrime n
+  | n == 0 || n == 1 = False
+  | otherwise        = smallestDivisor n > div n 2
 
 ------------------------------------------------------------------------------
 -- Ex 8: implement a function biggestPrimeAtMost that returns the
