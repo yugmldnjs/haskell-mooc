@@ -208,6 +208,11 @@ joinToLength n xs = [a ++ b|a <- xs, b<-xs, length a + length b == n]
 --   [] +|+ [True]        ==> [True]
 --   [] +|+ []            ==> []
 
+(+|+) :: [a] -> [a] -> [a]
+[] +|+ [] = []
+[] +|+ (y:_) = [y]
+(x:_) +|+ [] = [x]
+(x:_) +|+ (y:_) = [x,y]
 
 ------------------------------------------------------------------------------
 -- Ex 11: remember the lectureParticipants example from Lecture 2? We
