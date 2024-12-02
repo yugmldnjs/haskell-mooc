@@ -122,7 +122,7 @@ capitalize' ((x:xs):xss) = (toUpper x : xs) : capitalize' xss
 --   * the function takeWhile
 
 powers :: Int -> Int -> [Int]
-powers k max = takeWhile (<=max) [ k^x | x <- [0..]]
+powers k max = takeWhile (<=max) [ k^n | n <- [0..]]
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a functional while loop. While should be a function
@@ -145,7 +145,9 @@ powers k max = takeWhile (<=max) [ k^x | x <- [0..]]
 --     ==> Avvt
 
 while :: (a->Bool) -> (a->a) -> a -> a
-while check update value = todo
+while check update value = 
+  if check value then while check update (update value)
+  else value
 
 ------------------------------------------------------------------------------
 -- Ex 8: another version of a while loop. This time, the check
