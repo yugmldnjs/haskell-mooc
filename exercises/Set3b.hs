@@ -182,7 +182,9 @@ mymaximum bigger max (x:xs)
 -- Use recursion and pattern matching. Do not use any library functions.
 
 map2 :: (a -> b -> c) -> [a] -> [b] -> [c]
-map2 f as bs = todo
+map2 f as [] = [] 
+map2 f [] bs = []
+map2 f (a:as) (b:bs) = f a b : map2 f as bs 
 
 ------------------------------------------------------------------------------
 -- Ex 10: implement the function maybeMap, which works a bit like a
