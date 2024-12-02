@@ -102,6 +102,7 @@ palindrome xs = xs == reverse xs
 capitalize :: String -> String
 capitalize xs = unwords . capitalize' $ words xs
 
+capitalize' :: [String] -> [String]
 capitalize' [] = []
 capitalize' ((x:xs):xss) = (toUpper x : xs) : capitalize' xss
 
@@ -121,7 +122,7 @@ capitalize' ((x:xs):xss) = (toUpper x : xs) : capitalize' xss
 --   * the function takeWhile
 
 powers :: Int -> Int -> [Int]
-powers k max = todo
+powers k max = takeWhile (<=max) [ k^x | x <- [0..]]
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a functional while loop. While should be a function
