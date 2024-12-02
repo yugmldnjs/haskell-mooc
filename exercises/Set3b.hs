@@ -119,7 +119,11 @@ sorted (x:xs:xss) = x <= xs && sorted (xs:xss)
 -- Use pattern matching and recursion (and the list constructors : and [])
 
 sumsOf :: [Int] -> [Int]
-sumsOf xs = todo
+sumsOf [] = []
+sumsOf (x:xs) = sumsof' x xs 
+
+sumsof' x [] = [x]
+sumsof' x (y:ys) = x : sumsof' (y+x) ys 
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement the function merge that merges two sorted lists of
