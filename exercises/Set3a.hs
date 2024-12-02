@@ -12,6 +12,7 @@ import Mooc.Todo
 import Data.Char
 import Data.Either
 import Data.List
+import Control.Monad (join)
 
 ------------------------------------------------------------------------------
 -- Ex 1: implement the function maxBy that takes as argument a
@@ -193,7 +194,7 @@ bomb x = Right (x-1)
 -- Hint! This is a great use for list comprehensions
 
 joinToLength :: Int -> [String] -> [String]
-joinToLength = todo
+joinToLength n xs = [a ++ b|a <- xs, b<-xs, length a + length b == n]
 
 ------------------------------------------------------------------------------
 -- Ex 10: implement the operator +|+ that returns a list with the first
