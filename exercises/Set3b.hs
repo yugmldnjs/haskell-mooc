@@ -136,7 +136,12 @@ sumsof' x (y:ys) = x : sumsof' (y+x) ys
 --   merge [1,1,6] [1,2]   ==> [1,1,1,2,6]
 
 merge :: [Int] -> [Int] -> [Int]
-merge xs ys = todo
+merge [] [] = []
+merge xs [] = xs
+merge [] ys = ys
+merge (x:xs) (y:ys)
+  | x < y = x : merge xs (y:ys)
+  |otherwise = y : merge (x:xs) ys
 
 ------------------------------------------------------------------------------
 -- Ex 8: compute the biggest element, using a comparison function
