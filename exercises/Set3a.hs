@@ -229,7 +229,7 @@ joinToLength n xs = [a ++ b|a <- xs, b<-xs, length a + length b == n]
 --   sumRights [Left "bad!", Left "missing"]         ==>  0
 
 sumRights :: [Either a Int] -> Int
-sumRights = todo
+sumRights xs = sum (map (either (const 0) id) xs)
 
 ------------------------------------------------------------------------------
 -- Ex 12: recall the binary function composition operation
